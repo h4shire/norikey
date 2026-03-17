@@ -1,0 +1,40 @@
+# Sensitive overlay example for NoriKey.
+# Store this as plaintext only temporarily, then seal it into config.sealed.
+# This file is intended to override values from config.yaml / config.example.yaml.
+
+remote_mode: "mandatory_gate"
+
+remote_quorum_k: 1
+remote_selection_mode: "random_subset"
+remote_max_active_servers: 3
+remote_request_timeout_ms: 3500
+remote_retry_backoff_ms: 1200
+remote_require_brain_key_auth: true
+remote_auth_mode: "brain_key_token_v1"
+remote_release_mode: "remote_subshare_v1"
+remote_require_distinct_servers: true
+
+remote_servers:
+  - id: "srv-a"
+    endpoint: "https://srv-01.example.com/remote_share.php"
+    weight: 100
+    response_sig_key_id: "default"
+    response_sig_pubkey_hex: "REPLACE_WITH_SERVER_A_RESPONSE_PUBLIC_KEY_HEX"
+
+  - id: "srv-b"
+    endpoint: "https://srv-02.example.com/remote_share.php"
+    weight: 100
+    response_sig_key_id: "default"
+    response_sig_pubkey_hex: "REPLACE_WITH_SERVER_B_RESPONSE_PUBLIC_KEY_HEX"
+
+  - id: "srv-c"
+    endpoint: "https://srv-03.example.com/remote_share.php"
+    weight: 100
+    response_sig_key_id: "default"
+    response_sig_pubkey_hex: "REPLACE_WITH_SERVER_C_RESPONSE_PUBLIC_KEY_HEX"
+
+  - id: "srv-d"
+    endpoint: "https://srv-04.example.com/remote_share.php"
+    weight: 100
+    response_sig_key_id: "default"
+    response_sig_pubkey_hex: "REPLACE_WITH_SERVER_D_RESPONSE_PUBLIC_KEY_HEX"
